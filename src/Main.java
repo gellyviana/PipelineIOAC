@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.Scanner;
+import java.io.IOException;
 /**
  * 
  * @author gelly
@@ -9,26 +11,23 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
-	public static void main(String[] args) {
-		try{
-			FileInputStream arquivoLer = new FileInputStream("arquivo.txt");
-			InputStreamReader input = new InputStreamReader(arquivoLer);
-			BufferedReader buffer = new BufferedReader(input);
-			
-			String linha;
-			do{
-				linha = buffer.readLine();
-				if(linha != null){
-					StringTokenizer st = new StringTokenizer(linha);
-					while(st.hasMoreTokens()){
-						System.out.println(st.nextToken());
-					}
-				}
-			}while(linha != null);
-		}catch(Exception e){
-			System.out.println("Erro ao ler arquivo.");
+	public static void main(String[] args) throws IOException{
+		FileInputStream stream;
+		stream = new FileInputStream("arquivo.txt");
+		InputStreamReader reader;
+		reader = new InputStreamReader(stream);
+		BufferedReader br;
+		br = new BufferedReader(reader);
+		String linha = br.readLine();
+		while(linha != null) {
+		   String nome = linha.substring(0, linha.indexOf('|'));
+		   String cidade = linha.substring(linha.indexOf('|') + 1, linha.lastIndexOf('|'));
+		   String compras = linha.substring(linha.lastIndexOf('|') + 1, linha.length());
+		   System.out.println(nome);
+		   System.out.println(cidade);
+		   System.out.println(compras);
+		   linha = br.readLine();
 		}
-
 	}
 
 }

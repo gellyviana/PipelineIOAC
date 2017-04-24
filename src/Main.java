@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Scanner;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException{
+		Intrucoes n = new Intrucoes();
 		FileInputStream stream;
 		stream = new FileInputStream("arquivo.txt");
 		InputStreamReader reader;
@@ -20,14 +22,18 @@ public class Main {
 		br = new BufferedReader(reader);
 		String linha = br.readLine();
 		while(linha != null) {
-		   String nome = linha.substring(0, linha.indexOf('|'));
-		   String cidade = linha.substring(linha.indexOf('|') + 1, linha.lastIndexOf('|'));
-		   String compras = linha.substring(linha.lastIndexOf('|') + 1, linha.length());
-		   System.out.println(nome);
-		   System.out.println(cidade);
-		   System.out.println(compras);
-		   linha = br.readLine();
+			//if(linha.indexOf('$') != -1){
+			//	String instrucao = linha.substring(0, linha.indexOf('$'));
+			//	n.add(instrucao);
+			//}
+			String[] p=linha.split("\\s");			
+			System.out.println("linha");
+			for(String k:p)
+				System.out.println(k);
+
+			linha = br.readLine();
 		}
+		System.out.println(n.retornaLista());
 	}
 
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Intrucoes {
+	ArrayList<String> preDefinido;
 	ArrayList<String> instrucoes;
 
 	public Intrucoes() {

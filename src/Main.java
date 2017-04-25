@@ -3,8 +3,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Scanner;
 import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * 
  * @author gelly
@@ -14,26 +15,31 @@ public class Main {
 
 	public static void main(String[] args) throws IOException{
 		Intrucoes n = new Intrucoes();
-		FileInputStream stream;
-		stream = new FileInputStream("arquivo.txt");
-		InputStreamReader reader;
-		reader = new InputStreamReader(stream);
-		BufferedReader br;
-		br = new BufferedReader(reader);
+		Fonte1 f1 = new Fonte1();
+		FileInputStream stream= new FileInputStream("arquivo.txt");
+		InputStreamReader reader = new InputStreamReader(stream);
+		BufferedReader br = new BufferedReader(reader);
 		String linha = br.readLine();
 		while(linha != null) {
-			//if(linha.indexOf('$') != -1){
-			//	String instrucao = linha.substring(0, linha.indexOf('$'));
-			//	n.add(instrucao);
-			//}
-			String[] p=linha.split("\\s");			
-			System.out.println("linha");
-			for(String k:p)
-				System.out.println(k);
+			if(linha.indexOf('$') != -1){
+				String instrucao = linha.substring(0, linha.indexOf('$'));
+				n.add(instrucao);
+			}
+			else if (linha.indexOf(' ') != -1) {
+				System.out.println("Dra Thaiza querendo botar fogo no plantão");
 
+				String fonte1 = linha.substring(4, linha.indexOf(','));
+				f1.add(fonte1);
+			}
+			String[] p=linha.split(" ", 2);			
+			for(String k:p)
+				if(k.contains("$")){
+					f1.add(k);
+				}
 			linha = br.readLine();
 		}
 		System.out.println(n.retornaLista());
+		System.out.println(f1.retornaLista());
 	}
 
 }

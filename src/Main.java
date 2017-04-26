@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * 
@@ -14,32 +14,41 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) throws IOException{
-		Intrucoes n = new Intrucoes();
-		Fonte1 f1 = new Fonte1();
+	
 		FileInputStream stream= new FileInputStream("arquivo.txt");
 		InputStreamReader reader = new InputStreamReader(stream);
 		BufferedReader br = new BufferedReader(reader);
 		String linha = br.readLine();
+		ArrayList<Instrucao> listaDeIntrucoes=new ArrayList<>();
+
 		while(linha != null) {
+		/*
 			if(linha.indexOf('$') != -1){
 				String instrucao = linha.substring(0, linha.indexOf('$'));
 				n.add(instrucao);
 			}
-			else if (linha.indexOf(' ') != -1) {
-				System.out.println("Dra Thaiza querendo botar fogo no plantão");
-
-				String fonte1 = linha.substring(4, linha.indexOf(','));
-				f1.add(fonte1);
+			
+			
+		*/
+			String[] inst=linha.split(" ");
+			
+			if(inst[0].equals("add")){
+				listaDeIntrucoes.add(new Instrucao("3op", inst[0], inst[1], inst[2]+inst[3]));
+			}else if(inst[0].equals("sub")){
+				listaDeIntrucoes.add(new Instrucao("3op", inst[0], inst[1], inst[2]+inst[3]));
+			}else if(inst[0].equals("lw")){
+				listaDeIntrucoes.add(new Instrucao("2op", inst[0], inst[1], inst[2]));
+			}else if(inst[0].equals("sw")){
+				listaDeIntrucoes.add(new Instrucao("2op", inst[0], inst[1], inst[2]));
+			}else if(inst[0].equals("beq")){
+				listaDeIntrucoes.add(new Instrucao("2op", inst[0], inst[1]));
+			}else if(inst[0].equals("bne")){
+				listaDeIntrucoes.add(new Instrucao("2op", inst[0], inst[1]));
 			}
-			String[] p=linha.split(" ", 2);			
-			for(String k:p)
-				if(k.contains("$")){
-					f1.add(k);
-				}
+
 			linha = br.readLine();
+
 		}
-		System.out.println(n.retornaLista());
-		System.out.println(f1.retornaLista());
 	}
 
 }

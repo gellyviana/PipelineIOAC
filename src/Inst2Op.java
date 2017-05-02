@@ -11,7 +11,7 @@ public class Inst2Op extends Instrucao {
 	}
 
 	public String toString(){
-		return this.nome + this.operandoDest + this.operandoFont;
+		return this.nome +" "+ this.operandoDest + this.operandoFont;
 	}
 
 	public void setNome(String nome){

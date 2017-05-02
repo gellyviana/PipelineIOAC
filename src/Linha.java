@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 
@@ -25,7 +26,7 @@ public class Linha {
 
 		while(linha != null) {
 		
-			String[] inst=linha.split(" ");
+			String[] inst = linha.split(" "); 
 			
 			if(inst[0].equals("add")){
 				listaDeIntrucoes.add(new Inst3Op(inst[0], inst[1], inst[2], inst[3]));
@@ -44,9 +45,32 @@ public class Linha {
 			contLinha ++;
 			linha = br.readLine();
 		}
-		for (Instrucao t : listaDeIntrucoes ) {
-			System.out.println(t);
+	//Ve se tem conflito com as intruções que estão na pipe.
+		Impressora impressora = new Impressora();
+		HashMap<String, Instrucao> pipe = new HashMap<>();
+		pipe.put("IF", new Instrucao());
+		pipe.put("ID", new Instrucao());
+		pipe.put("EX", new Instrucao());
+		pipe.put("MEM", new Instrucao());
+		pipe.put("WB", new Instrucao());
+
+		for (int i = 0; i < listaDeIntrucoes.size() ;) {
+			pipe.put("WB", pipe.get("MEM"));
+			pipe.put("MEM", pipe.get("EX"));
+			pipe.put("EX", pipe.get("ID"));
+			pipe.put("ID", pipe.get("IF"));
+			
+
+			if (listaDeIntrucoes.get(i).validaInstrucao(pipe)){
+				pipe.put("IF", listaDeIntrucoes.get(i));
+				i++;				
+			}
+			else{
+				pipe.put("IF", new Instrucao());
+			}
+			impressora.geraNovoEstagio(pipe);
 		}
+		impressora.imprime();
 	}
 
 }

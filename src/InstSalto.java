@@ -10,19 +10,19 @@ public class InstSalto extends Instrucao {
 	}
 
 	public String toString(){
-		return this.nome + this.operandoDest + this.operandoFont;
+		return this.nome +" "+ this.operandoDest + this.operandoFont;
 	}
 
 	public void setNome(String nome){
-		this.nome=nome;
+		this.nome = nome;
 	}
 
 	public void setOperandoFont(String operandoFont){
-		this.operandoFont=operandoFont;
+		this.operandoFont = operandoFont;
 	}
 
 	public void setOperandoDest(String operandoDest){
-		this.operandoDest=operandoDest;
+		this.operandoDest = operandoDest;
 	}
 
 	public String getNome(){

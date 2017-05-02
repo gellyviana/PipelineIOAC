@@ -13,7 +13,7 @@ public class Inst3Op extends Instrucao{
 	}
 
 	public String toString(){
-		return this.nome + this.operandoDest + this.operandoFont1 + this.operandoFont2;
+		return this.nome +" "+ this.operandoDest + this.operandoFont1 + this.operandoFont2;
 	}
 
 	public void setNome(String nome){

@@ -1,3 +1,10 @@
+/**
+*
+* @author Gelly Viana Mota
+* @see Classe responsável em armazenar as instruões com 3 operandos. 
+* @version 2.0
+*
+*/
 public class Inst3Op extends Instrucao{
 	private String nome;
 	private String operandoFont1;

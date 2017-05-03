@@ -1,3 +1,10 @@
+/**
+*
+* @author Gelly Viana Mota
+* @see Classe responsável em armazenar as instruões do tipo Salto. 
+* @version 2.0
+*
+*/
 public class InstSalto extends Instrucao {
 	private String nome;
 	private String operandoFont;

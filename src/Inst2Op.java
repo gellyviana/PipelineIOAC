@@ -1,3 +1,10 @@
+/**
+*
+* @author Gelly Viana Mota
+* @see Classe responsável em armazenar as instruões com dois operandos. 
+* @version 2.0
+*
+*/
 public class Inst2Op extends Instrucao {
 
 	private String nome;

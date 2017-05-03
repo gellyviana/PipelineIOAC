@@ -9,7 +9,9 @@ import java.util.HashMap;
 
 /**
  * 
- * @author gelly
+ * @author Gelly Viana Mota
+ * @link https://github.com/gellyviana/PipelineIOAC.git
+ * @version 2.0 
  *
  */
 public class Linha {
@@ -45,7 +47,7 @@ public class Linha {
 			contLinha ++;
 			linha = br.readLine();
 		}
-	//Ve se tem conflito com as intruções que estão na pipe.
+		
 		Impressora impressora = new Impressora();
 		HashMap<String, Instrucao> pipe = new HashMap<>();
 		pipe.put("IF", new Instrucao());

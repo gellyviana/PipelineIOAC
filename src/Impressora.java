@@ -1,3 +1,10 @@
+/**
+*
+* @author Gelly Viana Mota
+* @see Classe responsável em imprimir o que contém na pipeline. 
+* @version 2.0
+*
+*/
 import java.util.HashMap;
 public class Impressora {
 	

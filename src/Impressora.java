@@ -16,6 +16,16 @@ public class Impressora {
 		saida = "";
 	}
 
+	public boolean pipeVazio(HashMap<String, Instrucao> pipe){
+		for (Instrucao i : pipe.values()) {
+			System.out.println(i);
+			if (!i.toString().equals("")) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void geraNovoEstagio(HashMap<String, Instrucao> pipe){
 			this.cicloAtual++;
 

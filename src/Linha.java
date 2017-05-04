@@ -72,6 +72,22 @@ public class Linha {
 			}
 			impressora.geraNovoEstagio(pipe);
 		}
+		pipe.put("WB", pipe.get("MEM"));
+		pipe.put("MEM", pipe.get("EX"));
+		pipe.put("EX", pipe.get("ID"));
+		pipe.put("ID", pipe.get("IF"));
+		pipe.put("IF", new Instrucao());
+			
+		while(!impressora.pipeVazio(pipe)){
+			impressora.geraNovoEstagio(pipe);
+			pipe.put("WB", pipe.get("MEM"));
+			pipe.put("MEM", pipe.get("EX"));
+			pipe.put("EX", pipe.get("ID"));
+			pipe.put("ID", pipe.get("IF"));
+			pipe.put("IF", new Instrucao());
+			
+			//impressora.geraNovoEstagio(pipe);
+		}
 		impressora.imprime();
 	}
 
